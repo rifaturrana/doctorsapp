@@ -1,0 +1,22 @@
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import Register from "./Pages/Auth/Register/Register";
+import Login from "./Pages/Auth/Login/Login";
+import About from "./Pages/About/About";
+import Contact from "./Pages/Contact/Contact";
+
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/contact" component={Contact} />
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;

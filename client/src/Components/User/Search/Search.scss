@@ -1,0 +1,38 @@
+@import "../../../App.scss";
+
+.search {
+  .card {
+    width: 100%;
+    margin: auto;
+
+    border-radius: 25px;
+
+    form {
+      .form-control {
+        border: 0;
+        height: 45px;
+        font-size: 14px;
+        padding-left: 10px;
+      }
+
+      .btn {
+        border: 0;
+        height: 45px;
+        border: 0;
+        background: $secondary-color;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+      }
+    }
+
+    @media (min-width: 576px) {
+      width: 500px;
+    }
+
+    @media (min-width: 768px) {
+      width: 600px;
+    }
+  }
+}

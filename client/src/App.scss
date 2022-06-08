@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/bootstrap";
+
+$primary-color: #1d1f7b;
+$secondary-color: #fec200;
+$dashboard-primary: #ff5733;
+$muted: #dfdfdfc9;
+
+/* Flex Box */
+
+.flex-center {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+  height: 100%;
+}
