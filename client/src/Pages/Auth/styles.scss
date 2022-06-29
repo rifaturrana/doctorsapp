@@ -7,6 +7,7 @@
 
   .card {
     width: 92vw;
+    overflow: hidden;
 
     .card-header {
       padding-top: 35px;
@@ -78,7 +79,10 @@
 
         .form-control:focus {
           border: 1px solid $secondary-color;
-          box-shadow: 2px 2px 2px 2px rgba(40, 167, 69, 0.25);
+        }
+
+        .danger-border {
+          border: 1px solid red;
         }
 
         p {

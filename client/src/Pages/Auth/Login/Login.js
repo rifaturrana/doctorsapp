@@ -1,12 +1,67 @@
 import React, { useState } from "react";
 import "../styles.scss";
+import { useForm } from "react-hook-form";
 import { Images } from "../../../utils/Images";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Icon from "react-icons-kit";
 import { ic_done } from "react-icons-kit/md";
-
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { apiURL } from "../../../utils/apiURL";
+toast.configure({ autoClose: 2000 });
 const Login = () => {
+  const history = useHistory();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [accountType, setAccountType] = useState("patient");
+  const [loading, setloading] = useState(false);
+
+  const token = localStorage.getItem("token");
+  const checkRole = (token) => {
+    const decode = jwt_decode(token);
+    console.log(decode);
+    const role = decode.role;
+    const id = decode.id;
+    localStorage.setItem("id", id);
+    if (role === "doctor") {
+      history.push("/");
+    }
+    if (role === "patient") {
+      history.push("/");
+    }
+  };
+  if (token) {
+    checkRole(token);
+  }
+  const onSubmit = async (data) => {
+    try {
+      const newData = {
+        role: accountType,
+        email: data.email,
+        password: data.password,
+      };
+      console.log(newData);
+      setloading(true);
+      const response = await axios.post(`${apiURL}/api/v1/auth/login`, newData);
+      console.log(response);
+      if (response.status === 200) {
+        setloading(false);
+        localStorage.setItem("token", response.data.token);
+        checkRole(response.data.token);
+      }
+    } catch (error) {
+      if (error) {
+        setloading(false);
+        toast.warn(error.response.data.message);
+      }
+    }
+  };
 
   return (
     <div className="login">
@@ -68,37 +123,53 @@ const Login = () => {
               <h6>Please fill out the form below to get started</h6>
             </div>
 
-            <form>
-              <div class="form-group mb-4">
-                <label for="exampleInputEmail1">Email address</label>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              {/* E-mail */}
+              <div className="form-group mb-4">
                 <input
-                  type="email"
-                  className="form-control"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  type="text"
+                  name="email"
+                  {...register("email", { required: true })}
+                  className={
+                    errors.email
+                      ? "form-control shadow-none danger-border"
+                      : "form-control shadow-none"
+                  }
+                  placeholder="E-mail"
                 />
-                <small id="emailHelp" class="form-text text-muted">
-                  We'll never share your email with anyone else.
-                </small>
               </div>
-              <div class="form-group mb-4">
-                <label for="exampleInputPassword1">Password</label>
+
+              {/* Password */}
+              <div className="form-group mb-4">
                 <input
                   type="password"
-                  className="form-control"
+                  name="password"
+                  {...register("password", { required: true })}
+                  className={
+                    errors.password
+                      ? "form-control shadow-none danger-border"
+                      : "form-control shadow-none"
+                  }
                   placeholder="Password"
                 />
               </div>
-              <div className="d-flex">
-                <div className="d-flex pt-2 me-2">
-                  <p>No account?</p>
-                  <Link to="/register">Register</Link>
-                </div>
-                <div>
-                  <button className="btn btn-primary">
-                    <span>Login</span>
+
+              <div className="d-flex justify-content-center ">
+                <div className="ml-auto">
+                  <button
+                    type="submit"
+                    className="btn shadow-none"
+                    disabled={loading}
+                  >
+                    {loading ? <span>Loading...</span> : <span>Login</span>}
                   </button>
                 </div>
+              </div>
+
+              <div className="d-flex justify-content-center pt-2">
+                <p className="text-muted">
+                  No account? <Link to="/register">Register</Link>
+                </p>
               </div>
             </form>
           </div>

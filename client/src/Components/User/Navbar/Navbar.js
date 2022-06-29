@@ -1,10 +1,18 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { Images } from "../../../utils/Images";
-import { BrowserRouter as Router, NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 const Navbar = () => {
+  const [token, settoken] = useState(
+    localStorage.getItem("token") || undefined
+  );
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      settoken(localStorage.getItem("token"));
+    }
+  }, []);
   return (
     <nav
       className="navbar navbar-expand-lg  fixed-top mb-2"
@@ -12,8 +20,16 @@ const Navbar = () => {
     >
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <img src={Images.Logo} alt="" width="40" height="30" />
-          Doctor
+          <img src={Images.Logo} alt="" width="40" height="40" />
+          <span
+            style={{
+              color: "black",
+              fontFamily: "monospace",
+              fontStyle: "bold",
+            }}
+          >
+            DoctorApp
+          </span>
         </Link>
         <button
           className="navbar-toggler"
@@ -44,9 +60,18 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
+              {token ? (
+                <Link className="nav-link" to="/">
+                  <span className="text">Profile</span>
+                </Link>
+              ) : (
+                <Link className="nav-link" to="/login">
+                  <span className="text">Login</span>
+                </Link>
+              )}
+              {/* <Link className="nav-link" to="/login">
                 <span className="text">Login</span>
-              </Link>
+              </Link> */}
             </li>
           </ul>
         </div>
