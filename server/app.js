@@ -1,17 +1,18 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
 const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
-
+dotenv.config();
 const auth = require("./api/routes/auth");
 
 app.use("/api/v1/auth", auth);
 
 mongoose.connect(
-  "mongodb+srv://rana:rana%408010@cluster01.cbxzxj8.mongodb.net/?retryWrites=true&w=majority",
+  process.env.MONGO_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     if (!err) {
@@ -22,7 +23,7 @@ mongoose.connect(
   }
 );
 
-const port = 3000;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log("listening on port " + port);
