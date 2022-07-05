@@ -19,7 +19,7 @@ const doctorSchema = new mongoose.Schema(
       unique: true,
       trim: true,
       lowercase: true,
-      validate: [validateEmail, "Please enter a valid email address"],
+      validate: [validateEmail, "Please provide a valid email address"],
     },
     role: {
       type: String,
@@ -35,6 +35,89 @@ const doctorSchema = new mongoose.Schema(
       type: String,
       trim: true,
       default: null,
+    },
+    college: {
+      type: String,
+      trim: true,
+      default: null,
+    },
+    passingYear: {
+      type: Date,
+      default: null,
+    },
+    specialist: {
+      type: String,
+      trim: true,
+      default: null,
+    },
+    currentHospital: {
+      type: String,
+      trim: true,
+      default: null,
+    },
+    location: {
+      address: {
+        country: {
+          type: String,
+          trim: true,
+          default: null,
+        },
+        city: {
+          type: String,
+          trim: true,
+          default: null,
+        },
+        currentAddress: {
+          type: String,
+          trim: true,
+          default: null,
+        },
+      },
+      type: {
+        type: String,
+        enum: ["Point"],
+      },
+      coordinates: {
+        type: [Number],
+        default: null,
+      },
+    },
+    councilHour: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Council",
+      },
+    ],
+    appointments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Appointment",
+      },
+    ],
+    access_token: {
+      type: String,
+      trim: true,
+      default: null,
+    },
+    status: {
+      type: String,
+      default: "offline",
+      enum: ["online", "offline"],
+    },
+    isApproved: {
+      type: String,
+      enum: ["approved", "pending", "submitted", "canceled"],
+      default: "pending",
+    },
+    updateRange: {
+      type: Number,
+      enum: [20, 40, 60, 80, 90, 100],
+      default: 20,
+    },
+    updateStep: {
+      type: Number,
+      enum: [1, 2, 3, 4, 5, 6],
+      default: 1,
     },
   },
   {

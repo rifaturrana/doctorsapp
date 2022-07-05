@@ -2,14 +2,20 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const fileUpload = require("express-fileupload");
 
 const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
+app.use(fileUpload());
+app.use("/uploads/doctor/profiles", express.static("uploads/doctor/profiles/"));
+
 dotenv.config();
 const auth = require("./api/routes/auth");
+const doctorRoute = require("./api/routes/doctor");
 
 app.use("/api/v1/auth", auth);
+app.use("/doctor", doctorRoute);
 
 mongoose.connect(
   process.env.MONGO_URL,
