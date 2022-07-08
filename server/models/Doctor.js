@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
+
 const validateEmail = function (email) {
   const re =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 };
 
-const doctorSchema = new mongoose.Schema(
+const doctorSchema = new Schema(
   {
     name: {
       type: String,
@@ -125,5 +126,6 @@ const doctorSchema = new mongoose.Schema(
   }
 );
 
-const Doctor = mongoose.model("Doctors", doctorSchema);
+const Doctor = model("Doctor", doctorSchema);
+
 module.exports = Doctor;

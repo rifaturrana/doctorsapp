@@ -4,6 +4,7 @@ import Register from "./Pages/Auth/Register/Register";
 import Login from "./Pages/Auth/Login/Login";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
+import Master from "./Pages/Account/Doctor/Master/Master";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/doctor" component={Master} />
       </Switch>
     </Router>
   );

@@ -25,7 +25,7 @@ const Login = () => {
   const token = localStorage.getItem("token");
   const checkRole = (token) => {
     const decode = jwt_decode(token);
-    console.log(decode);
+    // console.log(decode);
     const role = decode.role;
     const id = decode.id;
     localStorage.setItem("id", id);
@@ -46,10 +46,10 @@ const Login = () => {
         email: data.email,
         password: data.password,
       };
-      console.log(newData);
+      // console.log(newData);
       setloading(true);
       const response = await axios.post(`${apiURL}/api/v1/auth/login`, newData);
-      console.log(response);
+      // console.log(response);
       if (response.status === 200) {
         setloading(false);
         localStorage.setItem("token", response.data.token);

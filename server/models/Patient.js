@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
+
 const validateEmail = function (email) {
   const re =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 };
 
-const patientSchema = new mongoose.Schema(
+const patientSchema = new Schema(
   {
     name: {
       type: String,
@@ -19,12 +20,17 @@ const patientSchema = new mongoose.Schema(
       unique: true,
       trim: true,
       lowercase: true,
-      validate: [validateEmail, "Please enter a valid email address"],
+      validate: [validateEmail, "Please provide a valid email address"],
     },
     role: {
       type: String,
-      default: "patient",
+      dafault: "patient",
       enum: ["patient"],
+    },
+    status: {
+      type: String,
+      default: "offline",
+      enum: ["online", "offline"],
     },
     password: {
       type: String,
@@ -56,11 +62,22 @@ const patientSchema = new mongoose.Schema(
       trim: true,
       deafult: true,
     },
+    appointmentRequests: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Appointment",
+      },
+    ],
+    access_token: {
+      type: String,
+      trim: true,
+      default: null,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const Patient = mongoose.model("Patient", patientSchema);
+const Patient = model("Patient", patientSchema);
 module.exports = Patient;
