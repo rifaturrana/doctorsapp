@@ -4,13 +4,17 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { apiURL } from "../../../../utils/apiURL";
 import { Images } from "../../../../utils/Images";
-
+import StepOne from "../../../../Components/Doctor/ProfileUpdate/StepOne";
+import StepTwo from "../../../../Components/Doctor/ProfileUpdate/StepTwo";
+import StepFive from "../../../../Components/Doctor/ProfileUpdate/StepFive";
+import StepThree from "../../../../Components/Doctor/ProfileUpdate/StepThree";
+import StepFour from "../../../../Components/Doctor/ProfileUpdate/StepFour";
 const Master = () => {
   const history = useHistory();
   const [step, setstep] = useState(null);
   const [doctor, setdoctor] = useState({});
   const [preLoading, setPreloading] = useState(true);
-  // const id = localStorage.getItem("id");
+  const id = localStorage.getItem("id");
   const [header] = useState({
     headers: { Authorization: "Bearer" + localStorage.getItem("token") },
   });
@@ -30,7 +34,10 @@ const Master = () => {
   useEffect(() => {
     loggedDoctor();
   }, []);
-
+  const updateResponse = (responseStep) => {
+    loggedDoctor();
+    setstep(responseStep);
+  };
   // console.log(doctor);
   if (preLoading) {
     return (
@@ -67,6 +74,18 @@ const Master = () => {
                   {doctor.updateRange}%
                 </div>
               </div>
+
+              {step === 1 ? (
+                <StepOne responsestep={updateResponse} id={id} />
+              ) : step === 2 ? (
+                <StepTwo responsestep={updateResponse} id={id} />
+              ) : step === 3 ? (
+                <StepThree responsestep={updateResponse} id={id} />
+              ) : step === 4 ? (
+                <StepFour responsestep={updateResponse} id={id} />
+              ) : step === 5 ? (
+                <StepFive responsestep={updateResponse} id={id} />
+              ) : null}
             </div>
           </div>
         </div>

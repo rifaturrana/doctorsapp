@@ -5,6 +5,7 @@ import Login from "./Pages/Auth/Login/Login";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
 import Master from "./Pages/Account/Doctor/Master/Master";
+import PatientAccountMaster from "./Pages/Account/Patient/Master/PatientAccountMaster";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/about" component={About} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/doctor" component={Master} />
+        <Route exact path="/patient" component={PatientAccountMaster} />
       </Switch>
     </Router>
   );

@@ -13,9 +13,11 @@ app.use("/uploads/doctor/profiles", express.static("uploads/doctor/profiles/"));
 dotenv.config();
 const auth = require("./api/routes/auth");
 const doctorRoute = require("./api/routes/doctor");
+const patientRoute = require("./api/routes/patient");
 
 app.use("/api/v1/auth", auth);
 app.use("/doctor", doctorRoute);
+app.use("/patient", patientRoute);
 
 mongoose.connect(
   process.env.MONGO_URL,
