@@ -14,10 +14,12 @@ dotenv.config();
 const auth = require("./api/routes/auth");
 const doctorRoute = require("./api/routes/doctor");
 const patientRoute = require("./api/routes/patient");
+const clientRoute = require("./api/routes/client");
 
 app.use("/api/v1/auth", auth);
 app.use("/doctor", doctorRoute);
 app.use("/patient", patientRoute);
+app.use("/client", clientRoute);
 
 mongoose.connect(
   process.env.MONGO_URL,

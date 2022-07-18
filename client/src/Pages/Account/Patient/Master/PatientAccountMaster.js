@@ -4,6 +4,9 @@ import { apiURL } from "../../../../utils/apiURL";
 import { Images } from "../../../../utils/Images";
 import { ic_dehaze } from "react-icons-kit/md";
 import Icon from "react-icons-kit";
+import SideMenu from "../../../../Components/Patient/SideMenu/SideMenu";
+import { Switch, Route } from "react-router-dom";
+import Profile from "../Profile/Profile";
 
 const Master = () => {
   const [user, setUser] = useState({});
@@ -52,6 +55,15 @@ const Master = () => {
           <p>{user.name ? user.name : user.email}</p>
           <Icon icon={ic_dehaze} size={25} />
         </div>
+        <SideMenu user={user} />
+      </div>
+
+      <div className="main flex-fill">
+        <Switch>
+          <Route exact path="/patient/profile">
+            <Profile user={user} />
+          </Route>
+        </Switch>
       </div>
     </div>
   );

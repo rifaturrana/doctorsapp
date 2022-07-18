@@ -7,7 +7,7 @@ const Navbar = () => {
   const [token, settoken] = useState(
     localStorage.getItem("token") || undefined
   );
-
+  console.log(token);
   useEffect(() => {
     if (localStorage.getItem("token")) {
       settoken(localStorage.getItem("token"));
@@ -61,7 +61,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               {token ? (
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/login">
                   <span className="text">Profile</span>
                 </Link>
               ) : (

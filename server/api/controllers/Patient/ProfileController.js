@@ -39,5 +39,96 @@ const Me = async (req, res, next) => {
     if (error) next(error);
   }
 };
+// Update Profile Photo
+const updatePhoto = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await CheckId(id);
 
-module.exports = { Me };
+    // Find Profile
+    const patient = await Patient.findById({ _id: id }).exec();
+    if (!patient) {
+      return res.status(404).json({
+        status: false,
+        message: "Patient not found",
+      });
+    }
+
+    // Remove Old file
+    if (patient.image) {
+      await Unlink.fileDelete("./uploads/patient/profiles/", patient.image);
+    }
+
+    if (req.files) {
+      filename = Upload.fileUpload(
+        req.files.image,
+        "./uploads/patient/profiles/"
+      );
+
+      const updateData = { image: filename };
+
+      const updatePatient = await patient
+        .updateOne({ $set: updateData }, { new: true })
+        .exec();
+
+      if (!updatePatient) {
+        return res.status(501).json({
+          message: "Update error",
+        });
+      }
+
+      return res.status(201).json({
+        status: true,
+        message: "Successfully profile picture updated.",
+      });
+    }
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+};
+
+// Update Bio
+const updateBio = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { name, age, height, weight, bloodPressure } = req.body;
+
+    await CheckId(id);
+
+    // Find Profile
+    const patient = await Patient.findById({ _id: id }).exec();
+    if (!patient) {
+      return res.status(404).json({
+        status: false,
+        message: "Patient not found",
+      });
+    }
+
+    const data = { name, age, height, weight, bloodPressure };
+
+    const updatePatient = await patient
+      .updateOne({ $set: data }, { new: true })
+      .exec();
+
+    if (!updatePatient) {
+      return res.status(501).json({
+        message: "Update error",
+      });
+    }
+
+    return res.status(201).json({
+      status: true,
+      message: "Successfully profile updated.",
+    });
+  } catch (error) {
+    if (error) next(error);
+  }
+};
+module.exports = {
+  Me,
+  updatePhoto,
+  updateBio,
+};

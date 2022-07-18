@@ -4,11 +4,30 @@ import Navbar from "../../Components/User/Navbar/Navbar";
 import { Images } from "../../utils/Images";
 import Search from "../../Components/User/Search/Search";
 import Footer from "../../Components/User/Footer/Footer";
+import DoctorListComponent from "../.././Components/User/DoctorsList/index";
 import "./Home.scss";
-import { BrowserRouter as Router } from "react-router-dom";
 import Content from "./Content/Content";
-
+import { useEffect } from "react";
+import axios from "axios";
+import { apiURL } from "../../utils/apiURL";
 const Home = () => {
+  const [doctor, setDoctor] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+
+  const fetchDoctors = async () => {
+    try {
+      const response = await axios.get(`${apiURL}/client/doctors`);
+      console.log(response);
+      setDoctor(response.data.doctors);
+      setLoading(false);
+    } catch (error) {
+      if (error) console.log(console.response);
+    }
+  };
+  useEffect(() => {
+    fetchDoctors();
+  }, []);
+  console.log(doctor);
   return (
     <>
       <Navbar />
@@ -27,6 +46,8 @@ const Home = () => {
           </div>
         </div>
         <Search />
+        <DoctorListComponent doctors={doctor} loading={isLoading} />
+
         {/* service  */}
         <div className="service">
           <div className="container">

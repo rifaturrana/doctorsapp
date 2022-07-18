@@ -167,7 +167,78 @@ const Login = async (req, res, next) => {
   }
 };
 
+const Logout = async (req, res, next) => {
+  try {
+    const tokel = req.headers.authorization.slice(6);
+    const decode = jwt.verify(token, "SECRET");
+
+    if (decode.role == "doctor") {
+      let account = await Doctor.findOne({
+        $and: [{ _id: decode.id }, { role: decode.role }],
+      });
+      if (!account) {
+        return res.status(404).json({
+          status: false,
+          message: "Invalid token",
+        });
+      }
+
+      const updateToken = await Doctor.findByIdAndUpdate(
+        { _id: decode.id },
+        { $set: { access_token: null, status: "offline" } }
+      );
+      if (!updateToken) {
+        return res
+          .status(404)
+          .json({ status: false, message: "Invalid token" });
+      }
+    }
+    res.status(200).json({
+      status: true,
+      message: "Successfully logged out",
+    });
+    // Patient Logout
+    if (decode.role === "patient") {
+      // Find account using account id and role
+      let account = await Patient.findOne({
+        $and: [{ _id: decode.id }, { role: decode.role }],
+      });
+      if (!account) {
+        return res.status(404).json({
+          status: false,
+          message: "Invalid token",
+        });
+      }
+
+      // Find account and null token field
+      const updateToken = await Patient.findByIdAndUpdate(
+        { _id: decode.id },
+        { $set: { access_token: null, status: "offline" } }
+      );
+      if (!updateToken) {
+        return res.status(404).json({
+          status: false,
+          message: "Invalid token",
+        });
+      }
+
+      res.status(200).json({
+        status: true,
+        message: "Successfully logged out",
+      });
+    }
+  } catch (error) {
+    if (error) {
+      res.status(501).json({
+        status: false,
+        message: error.message,
+      });
+    }
+  }
+};
+
 module.exports = {
   Register,
   Login,
+  Logout,
 };
