@@ -23,6 +23,7 @@ const DoctorsIndex = async (req, res, next) => {
     )
       .populate("councilHour", "schedule")
       .exec();
+
     // If doctor are not available
     if (!doctors.length)
       return res

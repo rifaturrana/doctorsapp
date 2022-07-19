@@ -4,15 +4,15 @@ import { Images } from "../../../utils/Images";
 import { Icon } from "react-icons-kit";
 import { useHistory } from "react-router-dom";
 import {
-  ic_home,
   ic_apps,
+  ic_home,
   ic_people,
   ic_person,
   ic_lock,
 } from "react-icons-kit/md";
 import axios from "axios";
 import { apiURL } from "../../../utils/apiURL";
-
+import "./style.scss";
 const SideMenu = ({ user }) => {
   const [isLoading, setLoading] = useState(false);
   let history = useHistory();
@@ -20,7 +20,7 @@ const SideMenu = ({ user }) => {
     headers: { Authorization: "Bearer" + localStorage.getItem("token") },
   });
 
-  const doLogOut = async () => {
+  const doLogout = async () => {
     try {
       setLoading(true);
       const response = await axios.get(`${apiURL}/auth/logout`, header);
@@ -37,74 +37,93 @@ const SideMenu = ({ user }) => {
   };
   console.log(user);
   return (
-    <div>
-      <div className="patient-sidemenu">
-        <div className="header">
-          <div className="d-flex">
-            <div className="img-box rounded-circle">
-              {user.image ? (
-                <img src={user.image} alt="" className="img-fluid" />
-              ) : (
-                <img src={Images.FakeUser} alt="" className="img-fluid" />
-              )}
-              {/* <img src={Images.FakeUser} alt="" className="img-fluid" /> */}
-            </div>
-            <div className="content pt-3">
-              <p>{user.email}</p>
-            </div>
+    <div className="patient-sidemenu">
+      {/* Header */}
+      <div className="header">
+        <div className="d-flex">
+          <div className="img-box rounded-circle">
+            {/* {user.image ? (
+              <img src={user.image} className="img-fluid" alt="..." />
+            ) : (
+              <img src={Images.FakeUser} className="img-fluid" alt="..." />
+            )} */}
+          </div>
+          <div className="content pt-3">
+            <p>{user.name ? user.name : user.email}</p>
           </div>
         </div>
-        <div className="body">
-          <NavLink to="/">
-            <div className="flex-column flex-center">
-              <Icon icon={ic_home} size={20} />
-              <p>Home</p>
-            </div>
-          </NavLink>
-          <NavLink to="/patient/">
-            <Icon icon={ic_apps} size={20} />
-            <p>Dashboard</p>
-          </NavLink>
-          <NavLink
-            exact
-            activeClassName="is-Active"
-            className="btn btn-block shadow-none"
-            to="/patient/profile"
-          >
-            <div className="icon-box rounded-circle border">
-              <div className="flex-center flex-column">
-                <Icon icon={ic_person} size={20} />
-              </div>
-            </div>
-            <p>My profile</p>
-          </NavLink>
+      </div>
 
-          <NavLink
-            exact
-            activeClassName="is-Active"
-            className="btn btn-block shadow-none"
-            to="/patient/appointments"
-          >
-            <div className="icon-box rounded-circle border">
-              <div className="flex-center flex-column">
-                <Icon icon={ic_people} size={20} />
-              </div>
+      {/* Body */}
+      <div className="body">
+        <NavLink
+          exact
+          activeClassName="is-Active"
+          className="btn btn-block shadow-none"
+          to="/"
+        >
+          <div className="icon-box rounded-circle border">
+            <div className="flex-center flex-column">
+              <Icon icon={ic_home} size={20} />
             </div>
-            <p>appointments</p>
-          </NavLink>
-          <button
-            type="button"
-            onClick={doLogOut}
-            className="btn btn-block shadow-none"
-          >
-            <div className="icon-box rounded-circle border">
-              <div className="flex-center flex-column">
-                <Icon icon={ic_lock} size={18} />
-              </div>
+          </div>
+          <p>Home</p>
+        </NavLink>
+        <NavLink
+          exact
+          activeClassName="is-Active"
+          className="btn btn-block shadow-none"
+          to="/patient/"
+        >
+          <div className="icon-box rounded-circle border">
+            <div className="flex-center flex-column">
+              <Icon icon={ic_apps} size={20} />
             </div>
-            {isLoading ? <span>Logging out...</span> : <span>logout</span>}
-          </button>
-        </div>
+          </div>
+          <p>dashboard</p>
+        </NavLink>
+
+        <NavLink
+          exact
+          activeClassName="is-Active"
+          className="btn btn-block shadow-none"
+          to="/patient/profile"
+        >
+          <div className="icon-box rounded-circle border">
+            <div className="flex-center flex-column">
+              <Icon icon={ic_person} size={20} />
+            </div>
+          </div>
+          <p>my profile</p>
+        </NavLink>
+
+        <NavLink
+          exact
+          activeClassName="is-Active"
+          className="btn btn-block shadow-none"
+          to="/patient/appointments"
+        >
+          <div className="icon-box rounded-circle border">
+            <div className="flex-center flex-column">
+              <Icon icon={ic_people} size={20} />
+            </div>
+          </div>
+          <p>appointments</p>
+        </NavLink>
+
+        <button
+          type="button"
+          className="btn btn-block shadow-none"
+          onClick={doLogout}
+          disabled={isLoading}
+        >
+          <div className="icon-box rounded-circle border">
+            <div className="flex-center flex-column">
+              <Icon icon={ic_lock} size={18} />
+            </div>
+          </div>
+          {isLoading ? <span>Logging out...</span> : <span>logout</span>}
+        </button>
       </div>
     </div>
   );

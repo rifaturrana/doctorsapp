@@ -6,6 +6,9 @@ import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
 import Master from "./Pages/Account/Doctor/Master/Master";
 import PatientAccountMaster from "./Pages/Account/Patient/Master/PatientAccountMaster";
+import SearchResultIndex from "./Pages/SearchResult/index";
+import FourOFour from "./Pages/FourOFour/index";
+import PrivateRoute from "./Components/PrivateRoute/index";
 
 function App() {
   return (
@@ -15,9 +18,18 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/search" component={SearchResultIndex} />
+
         <Route exact path="/contact" component={Contact} />
-        <Route exact path="/doctor" component={Master} />
-        <Route exact path="/patient" component={PatientAccountMaster} />
+        <PrivateRoute path="/doctor" role="doctor">
+          <Master />
+        </PrivateRoute>
+
+        {/* Patient Master */}
+        <PrivateRoute path="/patient" role="patient">
+          <PatientAccountMaster />
+        </PrivateRoute>
+        <Route path="*" component={FourOFour} />
       </Switch>
     </Router>
   );
