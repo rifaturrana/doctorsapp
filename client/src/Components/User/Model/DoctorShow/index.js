@@ -3,8 +3,8 @@ import "./style.scss";
 import Icon from "react-icons-kit";
 import jwt_decode from "jwt-decode";
 import { ic_clear } from "react-icons-kit/md";
-// import AppointmentModal from "../GetAppointment/index";
-// import AlertModal from "../Alert/AuthCheck/index";
+import AppointmentModal from "../GetAppointment/index";
+import AlertModal from "../Alert/AuthCheck/index";
 
 const Index = ({ show, doctor }) => {
   const token = localStorage.getItem("token");
@@ -44,14 +44,14 @@ const Index = ({ show, doctor }) => {
   };
 
   // Check Patient auth
-  //   if (isAuth.status) {
-  //     return (
-  //       <AlertModal
-  //         message={isAuth.message}
-  //         hide={() => setAuth({ message: null, status: false })}
-  //       />
-  //     );
-  //   }
+  if (isAuth.status) {
+    return (
+      <AlertModal
+        message={isAuth.message}
+        hide={() => setAuth({ message: null, status: false })}
+      />
+    );
+  }
 
   return (
     <div className="doctor-show shadow">
@@ -133,11 +133,14 @@ const Index = ({ show, doctor }) => {
       </div>
 
       {/* Appointment Modal */}
-      {/* {showAppointment.status ?
-                <AppointmentModal
-                    doctor={showAppointment.doctorId}
-                    hidemodal={() => setShowAppointment({ status: false, doctorId: null })}
-                /> : null} */}
+      {showAppointment.status ? (
+        <AppointmentModal
+          doctor={showAppointment.doctorId}
+          hidemodal={() =>
+            setShowAppointment({ status: false, doctorId: null })
+          }
+        />
+      ) : null}
     </div>
   );
 };

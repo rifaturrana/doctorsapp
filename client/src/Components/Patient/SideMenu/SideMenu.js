@@ -42,11 +42,11 @@ const SideMenu = ({ user }) => {
       <div className="header">
         <div className="d-flex">
           <div className="img-box rounded-circle">
-            {/* {user.image ? (
+            {user.image ? (
               <img src={user.image} className="img-fluid" alt="..." />
             ) : (
               <img src={Images.FakeUser} className="img-fluid" alt="..." />
-            )} */}
+            )}
           </div>
           <div className="content pt-3">
             <p>{user.name ? user.name : user.email}</p>
@@ -69,19 +69,6 @@ const SideMenu = ({ user }) => {
           </div>
           <p>Home</p>
         </NavLink>
-        <NavLink
-          exact
-          activeClassName="is-Active"
-          className="btn btn-block shadow-none"
-          to="/patient/"
-        >
-          <div className="icon-box rounded-circle border">
-            <div className="flex-center flex-column">
-              <Icon icon={ic_apps} size={20} />
-            </div>
-          </div>
-          <p>dashboard</p>
-        </NavLink>
 
         <NavLink
           exact
@@ -94,7 +81,7 @@ const SideMenu = ({ user }) => {
               <Icon icon={ic_person} size={20} />
             </div>
           </div>
-          <p>my profile</p>
+          <p>My profile</p>
         </NavLink>
 
         <NavLink
@@ -108,7 +95,7 @@ const SideMenu = ({ user }) => {
               <Icon icon={ic_people} size={20} />
             </div>
           </div>
-          <p>appointments</p>
+          <p>Appointments</p>
         </NavLink>
 
         <button

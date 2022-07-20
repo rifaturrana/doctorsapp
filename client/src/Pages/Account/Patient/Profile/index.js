@@ -25,33 +25,33 @@ const Index = ({ user }) => {
   });
 
   // Image onChange
-  // const imageChangeHandeller = async (event) => {
-  //   const file = event.target.files[0];
+  const imageChangeHandeller = async (event) => {
+    const file = event.target.files[0];
 
-  //   try {
-  //     if (file) {
-  //       setPreviewURL(URL.createObjectURL(event.target.files[0]));
-  //       let formData = new FormData();
-  //       formData.append("image", file);
+    try {
+      if (file) {
+        setPreviewURL(URL.createObjectURL(event.target.files[0]));
+        let formData = new FormData();
+        formData.append("image", file);
 
-  //       setUpload(true);
-  //       const response = await axios.post(
-  //         `${apiURL}/patient/profile/${id}/update/photo`,
-  //         formData,
-  //         header
-  //       );
-  //       if (response.status === 201) {
-  //         setUpload(false);
-  //         toast.success(response.data.message);
-  //       }
-  //     }
-  //   } catch (error) {
-  //     if (error) {
-  //       setUpload(false);
-  //       checkIfError(error);
-  //     }
-  //   }
-  // };
+        setUpload(true);
+        const response = await axios.post(
+          `${apiURL}/patient/profile/${id}/update/photo`,
+          formData,
+          header
+        );
+        if (response.status === 201) {
+          setUpload(false);
+          toast.success(response.data.message);
+        }
+      }
+    } catch (error) {
+      if (error) {
+        setUpload(false);
+        checkIfError(error);
+      }
+    }
+  };
 
   const onSubmit = async (data) => {
     try {
@@ -97,7 +97,7 @@ const Index = ({ user }) => {
                           <input
                             type="file"
                             className="upload"
-                            // onChange={imageChangeHandeller}
+                            onChange={imageChangeHandeller}
                           />
                         )}
                         {isUpload ? (

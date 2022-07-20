@@ -70,7 +70,7 @@ const Index = () => {
                       <td>Doctor name</td>
                       <td>Date</td>
                       <td>Time</td>
-                      <td className="text-center">Action</td>
+                      <td className="text-center">Status</td>
                     </tr>
                   </thead>
                   <tbody>
@@ -99,26 +99,16 @@ const Index = () => {
                           </td>
                           <td className="text-center">
                             {appointment.status === "pending" ? (
-                              <button
-                                type="button"
-                                className="btn shadow-none"
-                                disabled={true}
-                              >
-                                Pending
-                              </button>
+                              <p>Pending</p>
                             ) : (
-                              <button
-                                type="button"
-                                className="btn shadow-none"
-                                onClick={() =>
-                                  goChatPage(
-                                    appointment.doctor._id,
-                                    appointment._id
-                                  )
-                                }
-                              >
-                                go council
-                              </button>
+                              <p>Approved</p>
+                              // <button
+                              //   type="button"
+                              //   className="btn shadow-none"
+
+                              // >
+                              //   go council
+                              // </button>
                             )}
                           </td>
                         </tr>

@@ -11,3 +11,4 @@ router.route("/login").post(Login);
 router.route("/logout").get(Logout);
 
 module.exports = router;
+//localhost:3000/api/v1/auth/register

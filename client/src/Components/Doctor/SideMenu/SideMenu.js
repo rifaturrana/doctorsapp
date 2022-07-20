@@ -7,6 +7,7 @@ import {
   ic_people,
   ic_info_outline,
   ic_lock,
+  ic_home,
 } from "react-icons-kit/md";
 import axios from "axios";
 import { apiURL } from "../../../utils/apiURL";
@@ -73,11 +74,24 @@ const SideMenu = ({ doctor, editdialog }) => {
           exact
           activeClassName="is-Active"
           className="btn btn-block shadow-none"
+          to="/"
+        >
+          <div className="icon-box rounded-circle border">
+            <div className="flex-center flex-column">
+              <Icon icon={ic_home} size={20} />
+            </div>
+          </div>
+          <p>Home</p>
+        </NavLink>
+        {/* <NavLink
+          exact
+          activeClassName="is-Active"
+          className="btn btn-block shadow-none"
           to="/doctor/"
         >
           <Icon icon={ic_apps} size={20} />
           <span>dashboard</span>
-        </NavLink>
+        </NavLink> */}
         <NavLink
           exact
           activeClassName="is-Active"

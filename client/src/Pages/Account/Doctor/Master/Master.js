@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import axios from "axios";
+import "./style.scss";
 import { apiURL } from "../../../../utils/apiURL";
 import Icon from "react-icons-kit";
 import { ic_dehaze } from "react-icons-kit/md";
@@ -12,7 +13,9 @@ import StepFive from "../../../../Components/Doctor/ProfileUpdate/StepFive";
 import StepThree from "../../../../Components/Doctor/ProfileUpdate/StepThree";
 import StepFour from "../../../../Components/Doctor/ProfileUpdate/StepFour";
 import SideMenu from "../../../../Components/Doctor/SideMenu/SideMenu";
-import Appointments from "../Appointments/Appointments";
+import AppointmentsIndex from ".././Appointment/index";
+import DashboardIndex from ".././Dashboard/index";
+import RequestsIndex from ".././Request/index";
 import ProfileUpdate from "../../../../Components/Doctor/ProfileUpdateModal/ProfileUpdate";
 const Master = () => {
   const history = useHistory();
@@ -204,8 +207,13 @@ const Master = () => {
         {/* Main */}
         <div className="main flex-fill">
           <Switch>
-            <Route exact path="/doctor/appointments" component={Appointments} />
-            <Route exact path="/doctor/requests" component={Request} />
+            {/* <Route exact path="/doctor/" component={DashboardIndex} /> */}
+            <Route
+              exact
+              path="/doctor/appointments"
+              component={AppointmentsIndex}
+            />{" "}
+            <Route exact path="/doctor/requests" component={RequestsIndex} />
           </Switch>
         </div>
       </div>

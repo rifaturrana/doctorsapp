@@ -10,9 +10,9 @@ const hostURL = require("../../utils/url");
 
 const Me = async (req, res, next) => {
   try {
-    console.log(req.headers.authorization);
+    //console.log(req.headers.authorization);
     const token = req.headers.authorization.slice(6);
-    console.log(token);
+    //console.log(token);
     const decode = jwt.verify(token, "SECRET");
     console.log(decode);
     let account = await Doctor.findOne(

@@ -30,10 +30,10 @@ const Login = () => {
     const id = decode.id;
     localStorage.setItem("id", id);
     if (role === "doctor") {
-      history.push("/doctor");
+      history.push("/doctor/appointments");
     }
     if (role === "patient") {
-      history.push("/patient");
+      history.push("/patient/profile");
     }
   };
   if (token) {

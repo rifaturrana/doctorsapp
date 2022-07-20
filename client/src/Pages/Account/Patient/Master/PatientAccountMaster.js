@@ -9,7 +9,7 @@ import { Switch, Route } from "react-router-dom";
 import ProfileIndex from ".././Profile/index";
 import AppointmentIndex from ".././Appointments/index";
 import FourOFour from "../../.././FourOFour/index";
-import DashboardIndex from ".././Dashboard/index";
+import "./style.scss";
 const Master = () => {
   const [user, setUser] = useState({});
   const [show, setShow] = useState(false);
@@ -88,8 +88,6 @@ const Master = () => {
         {/* Main */}
         <div className="main flex-fill">
           <Switch>
-            <Route exact path="/patient/" component={DashboardIndex} />
-
             <Route exact path="/patient/profile">
               <ProfileIndex user={user} />
             </Route>

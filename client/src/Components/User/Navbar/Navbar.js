@@ -16,15 +16,15 @@ const Navbar = () => {
   return (
     <nav
       className="navbar navbar-expand-lg  fixed-top mb-2"
-      style={{ backgroundColor: "greenyellow" }}
+      style={{ backgroundColor: "#f0e4e4 " }}
     >
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           <img src={Images.Logo} alt="" width="40" height="40" />
           <span
             style={{
-              color: "black",
-              fontFamily: "monospace",
+              color: "#fddb27ff",
+              fontFamily: "sans-serif",
               fontStyle: "bold",
             }}
           >
