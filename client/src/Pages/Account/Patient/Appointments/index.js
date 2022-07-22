@@ -36,14 +36,15 @@ const Index = () => {
     fetchAppointments();
   }, [id, header]);
 
+  console.log(appointments);
   // Open chat window
-  const goChatPage = (doctorId, appointmentId) => {
-    history.push(
-      `/messages?reciver=${doctorId}&appointmentid=${appointmentId}&token=${localStorage.getItem(
-        "token"
-      )}`
-    );
-  };
+  // const goChatPage = (doctorId, appointmentId) => {
+  //   history.push(
+  //     `/messages?reciver=${doctorId}&appointmentid=${appointmentId}&token=${localStorage.getItem(
+  //       "token"
+  //     )}`
+  //   );
+  // };
 
   // data loading
   if (isLoading)
@@ -68,6 +69,7 @@ const Index = () => {
                     <tr>
                       <td>SL</td>
                       <td>Doctor name</td>
+                      <td>Specialist</td>
                       <td>Date</td>
                       <td>Time</td>
                       <td className="text-center">Status</td>
@@ -82,6 +84,9 @@ const Index = () => {
                           </td>
                           <td>
                             <p>{appointment.doctor.name}</p>
+                          </td>
+                          <td>
+                            <p>{appointment.doctor.specialist}</p>
                           </td>
                           <td>
                             <p>

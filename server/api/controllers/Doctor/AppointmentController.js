@@ -40,6 +40,7 @@ const ApprovedAppointments = async (req, res, next) => {
     )
       .populate("patientId", "_id")
       .exec();
+    console.log(results);
     if (!results.length)
       return res.status(404).json({
         status: false,

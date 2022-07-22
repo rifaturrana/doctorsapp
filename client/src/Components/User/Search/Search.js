@@ -7,8 +7,8 @@ import { useHistory } from "react-router-dom";
 import "./Search.scss";
 import { search } from "react-icons-kit/icomoon";
 import SearchResultComponent from "../../.././Pages/SearchResult/index";
-const Search = ({ doctors }) => {
-  console.log(doctors);
+const Search = () => {
+  //console.log(doctors);
   const history = useHistory();
   const {
     register,
@@ -22,32 +22,21 @@ const Search = ({ doctors }) => {
     { value: "Phycologist", label: "Phycologist" },
     { value: "Cardiologist", label: "Cardiologist" },
     { value: "Dentist", label: "Dentist" },
+    { value: "Cardiac", label: "Cardiac" },
   ];
   const onChangeSpecialist = (event) => {
     setSpecialist(event.value);
   };
-  const searched = doctors.filter((el) => {
-    return el.specialist === specialist;
-  });
-  console.log(searched);
-  // const onSubmit = (data) => {
-  //   // const newData = {
-  //   //     lattitude: lat,
-  //   //     longitude: lang,
-  //   //     deases: data.deases,
-  //   //     specialist: specialist
-  //   // }
-  //   history.push("/search");
-  // };
-  // if (searched) {
-  //   return <SearchResultComponent searched={searched} />;
-  // }
+
+  const onSubmit = () => {
+    history.push(`/search?specialist=${specialist || options[0].value}`);
+  };
 
   return (
     <div className="search">
       <div className="container">
         <div className="card border-0 shadow">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="d-flex">
               <div>
                 <Select
@@ -64,11 +53,7 @@ const Search = ({ doctors }) => {
                 />
               </div>
               <div>
-                <button
-                  onClick={() => history.push("/search")}
-                  type="submit"
-                  className="btn shadow-none"
-                >
+                <button type="submit" className="btn shadow-none">
                   <Icon icon={ic_search} size={20} />
                 </button>
               </div>

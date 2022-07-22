@@ -23,7 +23,7 @@ const Navbar = () => {
           <img src={Images.Logo} alt="" width="40" height="40" />
           <span
             style={{
-              color: "#fddb27ff",
+              color: "blue",
               fontFamily: "sans-serif",
               fontStyle: "bold",
             }}

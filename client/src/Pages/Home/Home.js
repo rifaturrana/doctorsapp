@@ -45,7 +45,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <Search doctors={doctor} />
+        <Search />
         <DoctorListComponent doctors={doctor} loading={isLoading} />
 
         {/* service  */}

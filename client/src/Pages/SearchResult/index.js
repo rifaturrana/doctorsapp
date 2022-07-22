@@ -1,52 +1,47 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { apiURL } from "../.././utils/apiURL";
-
 import NavbarComponent from "../.././Components/User/Navbar/Navbar";
 import SearchComponent from "../.././Components/User/Search/Search";
 import DoctorsListComponent from "../.././Components/User/DoctorsList/index";
 import FooterCompoent from "../../Components/User/Footer/Footer";
-import { search } from "react-icons-kit/icomoon";
+import { useLocation } from "react-router-dom";
 
-const Index = () => {
-  // const [doctors, setDoctors] = useState([]);
+const Index = ({ doctors }) => {
+  const location = useLocation();
+  console.log(location.search.slice(12));
 
-  // useEffect(() => {
-  //   //search doctors
-  //   const searchDoctors = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `https://jsonplaceholder.typicode.com/users`
-  //       );
-  //       setDoctors(response.data);
-  //     } catch (error) {
-  //       if (error) console.log(console.response);
-  //     }
-  //   };
-  //   searchDoctors();
-  // }, []);
-  // console.log(searched);
+  const searched = doctors.filter((el) => {
+    return el.specialist === location.search.slice(12);
+  });
+  console.log(searched);
   return (
     <div>
-      <NavbarComponent />
-
-      <div className="search-result-index">
+      <div className="pt-10">
+        <NavbarComponent />
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div className="search-result-index ">
         <div className="container">
           <div className="row">
-            <div className="col-12 py-4">
+            <div className="col-12 m-10 py-1 pt-10">
               <SearchComponent />
             </div>
             <div className="col-12 py-4 py-lg-5 text-center">
               <h3 className="font-weight-bold mb-0">
-                {/* // Found {doctors ? doctors.length : null} doctors. */}
+                Found {searched ? searched.length : null} doctors.
               </h3>
             </div>
           </div>
         </div>
 
         {/* Results */}
-        {/* <DoctorsListComponent doctors={doctors} /> */}
+        <DoctorsListComponent doctors={searched} />
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
       <FooterCompoent />
     </div>
   );

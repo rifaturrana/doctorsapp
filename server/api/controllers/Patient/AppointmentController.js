@@ -19,8 +19,9 @@ const GetAppointmentRequests = async (req, res, next) => {
       { patientId: id },
       { schedule: 1, status: 1 }
     )
-      .populate("doctor", "name")
+      .populate("doctor")
       .exec();
+    // console.log(results);
 
     // IF results not found
     if (!results.length) {
