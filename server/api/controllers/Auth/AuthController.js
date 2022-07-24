@@ -139,7 +139,7 @@ const Login = async (req, res, next) => {
             { $set: { access_token: token, status: "online" } },
             { new: true }
           ).exec();
-
+          console.log(updateToken);
           if (updateToken) {
             return res.status(200).json({
               status: true,

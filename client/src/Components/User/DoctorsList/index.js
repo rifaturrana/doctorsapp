@@ -57,11 +57,7 @@ const Index = ({ doctors, loading }) => {
                     onClick={() => shwoDoctorInfo(doctor)}
                   >
                     <div className="img-box rounded-circle">
-                      <img
-                        src={Images.Doctor}
-                        className="img-fluid"
-                        alt="..."
-                      />
+                      <img src={doctor.image} className="img-fluid" alt="..." />
                     </div>
                     <div className="content">
                       <h6>{doctor.name}</h6>

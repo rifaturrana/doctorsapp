@@ -80,7 +80,7 @@ const UpdateProfile = async (req, res, next) => {
       }
       filename = Upload.fileUpload(
         req.files.image,
-        "./uploads/doctor/profiles"
+        "./uploads/doctor/profiles/"
       );
       const updateData = {
         name: name,

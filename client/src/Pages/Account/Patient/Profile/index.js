@@ -40,6 +40,7 @@ const Index = ({ user }) => {
           formData,
           header
         );
+        console.log(response);
         if (response.status === 201) {
           setUpload(false);
           toast.success(response.data.message);
@@ -52,7 +53,9 @@ const Index = ({ user }) => {
       }
     }
   };
-
+  console.log(previewURL);
+  // const response = axios.get(`${apiURL}/patient/me`, header);
+  // console.log(response.data);
   const onSubmit = async (data) => {
     try {
       setLoading(true);

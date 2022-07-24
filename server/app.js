@@ -9,6 +9,10 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(fileUpload());
 app.use("/uploads/doctor/profiles", express.static("uploads/doctor/profiles/"));
+app.use(
+  "/uploads/patient/profiles",
+  express.static("uploads/patient/profiles/")
+);
 
 dotenv.config();
 const auth = require("./api/routes/auth");
