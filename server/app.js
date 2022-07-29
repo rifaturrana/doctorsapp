@@ -19,11 +19,13 @@ const auth = require("./api/routes/auth");
 const doctorRoute = require("./api/routes/doctor");
 const patientRoute = require("./api/routes/patient");
 const clientRoute = require("./api/routes/client");
+const adminRoute = require("./api/routes/admin");
 
 app.use("/api/v1/auth", auth);
 app.use("/doctor", doctorRoute);
 app.use("/patient", patientRoute);
 app.use("/client", clientRoute);
+app.use("/admin", adminRoute);
 
 mongoose.connect(
   process.env.MONGO_URL,

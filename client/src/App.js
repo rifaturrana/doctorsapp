@@ -5,10 +5,12 @@ import Login from "./Pages/Auth/Login/Login";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
 import Master from "./Pages/Account/Doctor/Master/Master";
+import AdminMaster from "./Pages/Account/Admin/Master/index";
 import PatientAccountMaster from "./Pages/Account/Patient/Master/PatientAccountMaster";
 import SearchResultIndex from "./Pages/SearchResult/index";
 import FourOFour from "./Pages/FourOFour/index";
 import PrivateRoute from "./Components/PrivateRoute/index";
+import AdminLogin from "./Pages/Auth/Admin/Login";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { apiURL } from "./utils/apiURL";
@@ -34,15 +36,15 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />
-        {/* <Route exact path="/search" component={SearchResultIndex} /> */}
+        <Route exact path="/contact" component={Contact} />
         <Route exact path="/search">
           <SearchResultIndex doctors={doctor} />
         </Route>
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/admin-login" component={AdminLogin} />
 
-        <Route exact path="/contact" component={Contact} />
         <PrivateRoute path="/doctor" role="doctor">
           <Master />
         </PrivateRoute>
@@ -51,6 +53,12 @@ function App() {
         <PrivateRoute path="/patient" role="patient">
           <PatientAccountMaster />
         </PrivateRoute>
+        {/* <PrivateRoute exact path="/admin" role="super_admin">
+          <AdminMaster />
+        </PrivateRoute> */}
+        <Route path="/admin" role="super_admin">
+          <AdminMaster />
+        </Route>
         <Route path="*" component={FourOFour} />
       </Switch>
     </Router>

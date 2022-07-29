@@ -11,7 +11,16 @@ router.post(
   AuthController.isDoctor,
   ProfileController.UpdateProfile
 );
-
+router.post(
+  "/profile/:id/update/photo",
+  AuthController.isDoctor,
+  ProfileController.updatePhoto
+);
+router.post(
+  "/profile/:id/update/bio",
+  AuthController.isDoctor,
+  ProfileController.updateBio
+);
 router.get(
   "/appointment/:id/requests",
   AuthController.isDoctor,

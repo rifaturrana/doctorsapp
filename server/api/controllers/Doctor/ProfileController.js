@@ -224,4 +224,108 @@ const UpdateProfile = async (req, res, next) => {
   }
 };
 
-module.exports = { Me, UpdateProfile };
+const updatePhoto = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await CheckId(id);
+
+    // Find Profile
+    const doctor = await Doctor.findById({ _id: id }).exec();
+    if (!doctor) {
+      return res.status(404).json({
+        status: false,
+        message: "Doctor not found",
+      });
+    }
+
+    // Remove Old file
+    if (doctor.image) {
+      await Unlink.fileDelete("./uploads/doctor/profiles/", doctor.image);
+    }
+
+    if (req.files) {
+      filename = Upload.fileUpload(
+        req.files.image,
+        "./uploads/doctor/profiles/"
+      );
+
+      const updateData = { image: filename };
+
+      const updateDoctor = await Doctor.updateOne(
+        { $set: updateData },
+        { new: true }
+      ).exec();
+
+      if (!updateDoctor) {
+        return res.status(501).json({
+          message: "Update error",
+        });
+      }
+
+      return res.status(201).json({
+        status: true,
+        message: "Successfully profile picture updated.",
+      });
+    }
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+};
+
+// Update Bio
+const updateBio = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const {
+      name,
+      address,
+      phoneNumber,
+      passingYear,
+      college,
+      currentHospital,
+    } = req.body;
+
+    await CheckId(id);
+
+    // Find Profile
+    const doctor = await Doctor.findById({ _id: id }).exec();
+    if (!doctor) {
+      return res.status(404).json({
+        status: false,
+        message: "Doctor not found",
+      });
+    }
+
+    const data = {
+      name,
+      address,
+      phoneNumber,
+      passingYear,
+      college,
+      currentHospital,
+    };
+
+    const updateDoctor = await Doctor.updateOne(
+      { $set: data },
+      { new: true }
+    ).exec();
+
+    if (!updateDoctor) {
+      return res.status(501).json({
+        message: "Update error",
+      });
+    }
+
+    return res.status(201).json({
+      status: true,
+      message: "Successfully profile updated.",
+    });
+  } catch (error) {
+    if (error) next(error);
+  }
+};
+
+module.exports = { Me, updatePhoto, UpdateProfile, updateBio };
