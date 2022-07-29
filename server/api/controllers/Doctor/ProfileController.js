@@ -251,10 +251,9 @@ const updatePhoto = async (req, res, next) => {
 
       const updateData = { image: filename };
 
-      const updateDoctor = await Doctor.updateOne(
-        { $set: updateData },
-        { new: true }
-      ).exec();
+      const updateDoctor = await doctor
+        .updateOne({ $set: updateData }, { new: true })
+        .exec();
 
       if (!updateDoctor) {
         return res.status(501).json({
@@ -279,14 +278,8 @@ const updatePhoto = async (req, res, next) => {
 const updateBio = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const {
-      name,
-      address,
-      phoneNumber,
-      passingYear,
-      college,
-      currentHospital,
-    } = req.body;
+    const { name, college, passingYear, currentHospital, specialist } =
+      req.body;
 
     await CheckId(id);
 
@@ -299,20 +292,12 @@ const updateBio = async (req, res, next) => {
       });
     }
 
-    const data = {
-      name,
-      address,
-      phoneNumber,
-      passingYear,
-      college,
-      currentHospital,
-    };
+    const data = { name, college, passingYear, currentHospital, specialist };
 
-    const updateDoctor = await Doctor.updateOne(
-      { $set: data },
-      { new: true }
-    ).exec();
-
+    const updateDoctor = await doctor
+      .updateOne({ $set: data }, { new: true })
+      .exec();
+    console.log(updateDoctor);
     if (!updateDoctor) {
       return res.status(501).json({
         message: "Update error",
@@ -327,5 +312,4 @@ const updateBio = async (req, res, next) => {
     if (error) next(error);
   }
 };
-
 module.exports = { Me, updatePhoto, UpdateProfile, updateBio };

@@ -3,7 +3,7 @@ import "./style.scss";
 import { NavLink, useHistory } from "react-router-dom";
 import { Icon } from "react-icons-kit";
 import {
-  ic_apps,
+  ic_person,
   ic_people,
   ic_info_outline,
   ic_lock,
@@ -56,15 +56,6 @@ const SideMenu = ({ doctor, editdialog }) => {
               {doctor.specialist ?? null}
             </small>
           </div>
-          <div className="ml-auto">
-            <button
-              type="button"
-              className="btn btn-light rounded-circle shadow-none"
-              onClick={() => editdialog(true)}
-            >
-              <Icon icon={ic_edit} size={20} />
-            </button>
-          </div>
         </div>
       </div>
 
@@ -109,6 +100,19 @@ const SideMenu = ({ doctor, editdialog }) => {
         >
           <Icon icon={ic_info_outline} size={20} />
           <span>Requests</span>
+        </NavLink>
+        <NavLink
+          exact
+          activeClassName="is-Active"
+          className="btn btn-block shadow-none"
+          to="/doctor/profile"
+        >
+          <div className="icon-box rounded-circle border">
+            <div className="flex-center flex-column">
+              <Icon icon={ic_person} size={20} />
+            </div>
+          </div>
+          <p>My profile</p>
         </NavLink>
 
         <button

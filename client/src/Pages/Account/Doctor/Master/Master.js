@@ -14,9 +14,8 @@ import StepThree from "../../../../Components/Doctor/ProfileUpdate/StepThree";
 import StepFour from "../../../../Components/Doctor/ProfileUpdate/StepFour";
 import SideMenu from "../../../../Components/Doctor/SideMenu/SideMenu";
 import AppointmentsIndex from ".././Appointment/index";
-import DashboardIndex from ".././Dashboard/index";
+import Profile from ".././Profile/Profile";
 import RequestsIndex from ".././Request/index";
-import ProfileUpdate from "../../../../Components/Doctor/ProfileUpdateModal/ProfileUpdate";
 const Master = () => {
   const history = useHistory();
   const [step, setstep] = useState(null);
@@ -213,13 +212,13 @@ const Master = () => {
               path="/doctor/appointments"
               component={AppointmentsIndex}
             />{" "}
+            <Route exact path="/doctor/profile">
+              <Profile doctor={doctor} />
+            </Route>
             <Route exact path="/doctor/requests" component={RequestsIndex} />
           </Switch>
         </div>
       </div>
-
-      {/* Profile Update Modal */}
-      {isDaialog ? <ProfileUpdate editdialog={handleProfileEdit} /> : null}
     </div>
   );
 };

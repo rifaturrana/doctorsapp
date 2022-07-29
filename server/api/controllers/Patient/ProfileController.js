@@ -112,7 +112,7 @@ const updateBio = async (req, res, next) => {
     const updatePatient = await patient
       .updateOne({ $set: data }, { new: true })
       .exec();
-
+    console.log(updatePatient);
     if (!updatePatient) {
       return res.status(501).json({
         message: "Update error",
