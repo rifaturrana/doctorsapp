@@ -58,7 +58,7 @@ export default function Login() {
     <div className="auth">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-12 col-lg-6 d-none d-lg-block p-0">
+          {/* <div className="col-12 col-lg-6 d-none d-lg-block p-0">
             <div className="image-container">
               <img src={Images.AuthBg} className="img-fluid" alt="..." />
               <div className="overlay">
@@ -67,7 +67,7 @@ export default function Login() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="col-12 col-lg-6 py-3 credential-container">
             <div className="flex-center flex-column">

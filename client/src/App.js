@@ -56,9 +56,15 @@ function App() {
         {/* <PrivateRoute exact path="/admin" role="super_admin">
           <AdminMaster />
         </PrivateRoute> */}
-        <Route path="/admin" role="super_admin">
+        <PrivateRoute path="/admin" role="super_admin">
           <AdminMaster />
-        </Route>
+        </PrivateRoute>
+        <PrivateRoute path="/admin" role="admin">
+          <AdminMaster />
+        </PrivateRoute>
+        <PrivateRoute path="/admin" role="manager">
+          <AdminMaster />
+        </PrivateRoute>
         <Route path="*" component={FourOFour} />
       </Switch>
     </Router>

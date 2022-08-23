@@ -9,6 +9,9 @@ router.post("/auth/login", AuthController.Login);
 router.get("/auth/logout", AuthController.Logout);
 
 router.get("/doctor", DoctorController.Index);
+router.get("/appointments", DoctorController.TotalAppointments);
+router.get("/patients", DoctorController.TotalPatients);
+
 router.get("/doctor/:id/show", DoctorController.Show);
 router.put("/doctor/:id/account/update/:status", DoctorController.UpdateStatus);
 module.exports = router;

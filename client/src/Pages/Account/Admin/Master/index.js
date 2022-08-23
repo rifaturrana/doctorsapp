@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { apiURL } from "../../../../utils/apiURL";
 import "./style.scss";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "../../../../Components/Admin/Navbar/index";
@@ -19,6 +21,7 @@ const Index = () => {
       <div className="main">
         <Switch>
           <Route exact path="/admin" component={Dashboard} />
+
           <Route exact path="/admin/doctor" component={DoctorIndex} />
           <Route exact path="/admin/doctor/:id/show" component={DoctorShow} />
 

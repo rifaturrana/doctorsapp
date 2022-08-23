@@ -206,7 +206,7 @@ const GetAppointment = ({ hidemodal, doctor }) => {
                   </div>
 
                   {/* BP */}
-                  <div className="col-12 col-lg-6">
+                  {/* <div className="col-12 col-lg-6">
                     <div className="form-group mb-3">
                       {errors.bloodPressure && errors.bloodPressure.message ? (
                         <small className="text-danger">
@@ -227,7 +227,7 @@ const GetAppointment = ({ hidemodal, doctor }) => {
                         placeholder="Enter BP (50/60, 60/70)"
                       />
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Problem */}
                   <div className="col-12">

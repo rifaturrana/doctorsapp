@@ -9,7 +9,7 @@ const Index = ({ admins }) => {
         <thead>
           <tr className="border-bottom">
             <td className="text-center">SL</td>
-            <td className="text-center">Image</td>
+            <td className="text-center"></td>
             <td>Name</td>
             <td>E-mail</td>
             <td className="text-center">Role</td>

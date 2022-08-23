@@ -54,19 +54,19 @@ const SetAppointmentRequest = async (req, res, next) => {
       age,
       height,
       weight,
-      bloodPressure,
+      // bloodPressure,
       problemShortInfo,
     } = req.body;
-    console.log(
-      req.body,
-      "--------------------------------",
-      bloodPressure,
-      req.body.bloodPressure,
-      weight,
-      "-----------------------------",
-      req.body
-    );
-    const bloodpressure = req.body.bloodPressure;
+    // console.log(
+    //   req.body,
+    //   "--------------------------------",
+    //   bloodPressure,
+    //   req.body.bloodPressure,
+    //   weight,
+    //   "-----------------------------",
+    //   req.body
+    // );
+
     const newAppointment = new Appointment({
       doctor: doctorId,
       patientId,
@@ -76,11 +76,10 @@ const SetAppointmentRequest = async (req, res, next) => {
         age,
         height,
         weight,
-        bloodPressure: bloodpressure,
+        // bloodPressure,
         problemShortInfo,
       },
     });
-    console.log(newAppointment);
 
     // Create appoinment
     const createAppointment = await newAppointment.save();

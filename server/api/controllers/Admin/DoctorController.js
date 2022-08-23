@@ -1,4 +1,7 @@
 const Doctor = require("../../../models/Doctor");
+const Appointment = require("../../../models/Appointment");
+const Patient = require("../../../models/Patient");
+
 const hostURL = require("../../utils/url");
 const checkId = require("../../middleware/CheckId");
 
@@ -10,6 +13,7 @@ const Index = async (req, res, next) => {
       { name: 1, specialist: 1, image: 1, isApproved: 1 }
     ).exec();
 
+    // console.log(doctors);
     if (!doctors.length)
       return res
         .status(404)
@@ -32,7 +36,24 @@ const Index = async (req, res, next) => {
     if (error) next(error);
   }
 };
-
+const TotalAppointments = async (req, res, next) => {
+  try {
+    let totalAppointments = await Appointment.find();
+    console.log(totalAppointments);
+    res.status(200).json({ totalAppointments });
+  } catch (error) {
+    if (error) next(error);
+  }
+};
+const TotalPatients = async (req, res, next) => {
+  try {
+    let totalPatients = await Patient.find();
+    console.log(totalPatients);
+    res.status(200).json({ totalPatients });
+  } catch (error) {
+    if (error) next(error);
+  }
+};
 // Show individual doctor
 const Show = async (req, res, next) => {
   try {
@@ -88,4 +109,6 @@ module.exports = {
   Index,
   Show,
   UpdateStatus,
+  TotalAppointments,
+  TotalPatients,
 };

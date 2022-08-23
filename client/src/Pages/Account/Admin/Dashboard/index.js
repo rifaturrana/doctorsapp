@@ -1,8 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.scss";
 import { Bar } from "react-chartjs-2";
-
+import axios from "axios";
+import { apiURL } from "../../../../utils/apiURL";
 const Index = () => {
+  const [appointments, setappointments] = useState([]);
+  const [doctors, setDoctors] = useState([]);
+  const [patient, setpatient] = useState([]);
+  useEffect(() => {
+    // Fetch doctors
+    const fetchAppointments = async () => {
+      try {
+        const response = await axios.get(`${apiURL}/admin/appointments`);
+        if (response.status === 200) {
+          setappointments(response.data.totalAppointments);
+        }
+      } catch (error) {
+        if (error) console.log(error.response);
+      }
+    };
+    const fetchDoctor = async () => {
+      try {
+        const response = await axios.get(`${apiURL}/admin/doctor`);
+        if (response.status === 200) {
+          setDoctors(response.data.doctors);
+        }
+      } catch (error) {
+        if (error) console.log(error.response);
+      }
+    };
+    const fetchPatient = async () => {
+      try {
+        const response = await axios.get(`${apiURL}/admin/patients`);
+        if (response.status === 200) {
+          setpatient(response.data.totalPatients);
+        }
+      } catch (error) {
+        if (error) console.log(error.response);
+      }
+    };
+
+    fetchDoctor();
+    fetchPatient();
+
+    fetchAppointments();
+  }, []);
+  console.log(appointments);
   const [year] = useState(new Date().getFullYear());
   const [data] = useState({
     labels: [
@@ -43,6 +86,7 @@ const Index = () => {
       },
     ],
   });
+
   return (
     <div className="dashboard">
       <div className="container-fluid pl-lg-0 py-3 py-lg-0">
@@ -72,17 +116,17 @@ const Index = () => {
           </div>
           <div className="col-12 col-lg-6">
             <div className="row">
-              <div className="col-6 mb-3 pl-lg-0 pr-0">
+              <div className="col-12 mb-3 pl-lg-0 pr-0">
                 <div className="card border-0" style={{ height: 150 }}>
                   <div className="card-body">
                     <div className="flex-center flex-column text-center">
-                      <h5 className="mb-0">120</h5>
-                      <h6 className="mb-0">Appointments</h6>
+                      <h5 className="mb-0">{appointments.length}</h5>
+                      <h6 className="mb-0">Total Appointments</h6>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-6 mb-3">
+              {/* <div className="col-6 mb-3">
                 <div className="card border-0" style={{ height: 150 }}>
                   <div className="card-body">
                     <div className="flex-center flex-column text-center">
@@ -91,14 +135,14 @@ const Index = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="row">
               <div className="col-6 mb-3 pl-lg-0 pr-0">
                 <div className="card border-0" style={{ height: 150 }}>
                   <div className="flex-center flex-column text-center">
-                    <h5 className="mb-0">120</h5>
-                    <h6 className="mb-0">New Request</h6>
+                    <h5 className="mb-0">{doctors.length}</h5>
+                    <h6 className="mb-0">Total Doctors</h6>
                   </div>
                 </div>
               </div>
@@ -106,7 +150,7 @@ const Index = () => {
                 <div className="card border-0" style={{ height: 150 }}>
                   <div className="card-body">
                     <div className="flex-center flex-column text-center">
-                      <h5 className="mb-0">120</h5>
+                      <h5 className="mb-0">{patient.length}</h5>
                       <h6 className="mb-0">Total Patient</h6>
                     </div>
                   </div>

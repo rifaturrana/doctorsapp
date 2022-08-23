@@ -1,8 +1,8 @@
 const Doctor = require("../../../models/Doctor");
 const Council = require("../../../models/Council");
 const jwt = require("jsonwebtoken");
-const Upload = require("../.././services/FileUpload");
-const Unlink = require("../.././services/FileDelete");
+const Upload = require("../../services/FileUpload");
+const Unlink = require("../../services/FileDelete");
 const CheckId = require("../../middleware/CheckId");
 const hostURL = require("../../utils/url");
 

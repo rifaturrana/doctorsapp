@@ -43,6 +43,15 @@ const Index = () => {
       style={{ backgroundColor: "#f0e4e4 " }}
     >
       <div className="container-fluid">
+        <span
+          style={{
+            color: "blue",
+            fontFamily: "sans-serif",
+            fontStyle: "bold",
+          }}
+        >
+          Admin Panel
+        </span>
         <button
           className="navbar-toggler"
           type="button"
@@ -52,6 +61,7 @@ const Index = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
+          {" "}
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="toogleMobileMenu">

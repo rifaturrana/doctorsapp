@@ -3,10 +3,15 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const fileUpload = require("express-fileupload");
-
+const bodyparser = require("body-parser");
+const path = require("path");
 const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
+app.use(bodyparser.json());
+
+app.use(bodyparser.urlencoded({ extended: true }));
+
 app.use(fileUpload());
 app.use("/uploads/doctor/profiles", express.static("uploads/doctor/profiles/"));
 app.use(
@@ -38,8 +43,22 @@ mongoose.connect(
     }
   }
 );
+// ----------deployment--------
 
-const port = process.env.PORT;
+__dirname = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running...");
+  });
+}
+
+// ---------deployment----------
+const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
   console.log("listening on port " + port);
