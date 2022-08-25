@@ -67,13 +67,15 @@ const SideMenu = ({ doctor, editdialog }) => {
           className="btn btn-block shadow-none"
           to="/"
         >
-          <div className="icon-box rounded-circle border">
+          <div className="icon-box ">
             <div className="flex-center flex-column">
               <Icon icon={ic_home} size={20} />
             </div>
           </div>
-          <p>Home</p>
+          <p style={{ textAlign: "center" }}>Home</p>
         </NavLink>
+        <br />
+        <br />
         {/* <NavLink
           exact
           activeClassName="is-Active"
@@ -89,32 +91,45 @@ const SideMenu = ({ doctor, editdialog }) => {
           className="btn btn-block shadow-none"
           to="/doctor/appointments"
         >
-          <Icon icon={ic_people} size={20} />
-          <span>appointments</span>
+          <div className="icon-box ">
+            <div className="flex-center flex-column">
+              <Icon icon={ic_people} size={20} />
+            </div>
+          </div>
+          <p style={{ textAlign: "center" }}>Appointments</p>
         </NavLink>
+        <br />
+        <br />
         <NavLink
           exact
           activeClassName="is-Active"
           className="btn btn-block shadow-none"
           to="/doctor/requests"
         >
-          <Icon icon={ic_info_outline} size={20} />
-          <span>Requests</span>
+          <div className="icon-box ">
+            <div className="flex-center flex-column">
+              <Icon icon={ic_info_outline} size={20} />
+            </div>
+          </div>
+          <p style={{ textAlign: "center" }}>Requests</p>
         </NavLink>
+        <br />
+        <br />
         <NavLink
           exact
           activeClassName="is-Active"
           className="btn btn-block shadow-none"
           to="/doctor/profile"
         >
-          <div className="icon-box rounded-circle border">
+          <div className="icon-box  ">
             <div className="flex-center flex-column">
               <Icon icon={ic_person} size={20} />
             </div>
           </div>
-          <p>My profile</p>
+          <p style={{ textAlign: "center" }}>My profile</p>
         </NavLink>
-
+        <br />
+        <br />
         <button
           type="button"
           className="btn btn-block shadow-none"
@@ -124,6 +139,7 @@ const SideMenu = ({ doctor, editdialog }) => {
           <Icon icon={ic_lock} size={18} />
           {isLoading ? <span>Logging out...</span> : <span>logout</span>}
         </button>
+        <br />
       </div>
     </div>
   );

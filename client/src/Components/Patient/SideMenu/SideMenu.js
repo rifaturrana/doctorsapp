@@ -69,7 +69,8 @@ const SideMenu = ({ user }) => {
           </div>
           <p>Home</p>
         </NavLink>
-
+        <br />
+        <br />
         <NavLink
           exact
           activeClassName="is-Active"
@@ -83,7 +84,8 @@ const SideMenu = ({ user }) => {
           </div>
           <p>My profile</p>
         </NavLink>
-
+        <br />
+        <br />
         <NavLink
           exact
           activeClassName="is-Active"
@@ -97,7 +99,8 @@ const SideMenu = ({ user }) => {
           </div>
           <p>Appointments</p>
         </NavLink>
-
+        <br />
+        <br />
         <button
           type="button"
           className="btn btn-block shadow-none"

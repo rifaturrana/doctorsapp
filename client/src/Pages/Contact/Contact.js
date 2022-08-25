@@ -10,7 +10,10 @@ const Contact = () => {
       <div className="map-content">
         <div className="container">
           <div className="row">
-            <div className="col-12 text-center mb-5">
+            <div
+              className="col-12 text-center mb-5"
+              style={{ marginTop: "100px" }}
+            >
               <h1>Find Us on Google Maps</h1>
               <p>
                 Lorem ipsum, or lipsum as it is sometimes known, is dummy text

@@ -55,10 +55,10 @@ const Home = () => {
               <div className="col-12 col-lg-6 text-center text-lg-left content">
                 <h1>We Provide</h1>
                 <h3>24/7 hour Service</h3>
-                <p>Lorem ipsum</p>
+                {/* <p>Lorem ipsum</p>
                 <Link to="/contact" type="button" className="btn shadow-none">
                   Contact Us
-                </Link>
+                </Link> */}
               </div>
               <div className="col-12 col-lg-6 text-center text-lg-left mt-4 mt-lg-0">
                 <img src={Images.Service} className="" alt="..." />

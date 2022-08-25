@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c22dc18f.css",
+    "main.js": "/static/js/main.58f82ccf.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/404.png": "/static/media/404.6fc51f103b2d1604c435.png",
+    "static/media/authbg.jpg": "/static/media/authbg.5c61c316f4583cbb18f3.jpg",
+    "static/media/unlock.png": "/static/media/unlock.6034b240763534cbf30d.png",
+    "static/media/service.png": "/static/media/service.c2f8a01a818e065aacbd.png",
+    "static/media/people_search.png": "/static/media/people_search.656a19a996c6a2afc7af.png",
+    "static/media/doctor.jpg": "/static/media/doctor.c4f87873a4b51cf3c50d.jpg",
+    "static/media/about.png": "/static/media/about.ad6085310eaf16ddea04.png",
+    "static/media/works3.png": "/static/media/works3.61d1866499a48a13202d.png",
+    "static/media/works1.png": "/static/media/works1.235a4371e3e926ff7cfa.png",
+    "static/media/works2.png": "/static/media/works2.a485cb41928c3ca1711a.png",
+    "static/media/pending.png": "/static/media/pending.1a492b3de7ad2dad4da0.png",
+    "static/media/contact.png": "/static/media/contact.47f3279f012d0eea9bc3.png",
+    "static/media/loader.gif": "/static/media/loader.75842d86ce8c7febad13.gif",
+    "static/media/logo.png": "/static/media/logo.93bf61c6cce2f3d6d57a.png",
+    "index.html": "/index.html",
+    "main.c22dc18f.css.map": "/static/css/main.c22dc18f.css.map",
+    "main.58f82ccf.js.map": "/static/js/main.58f82ccf.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c22dc18f.css",
+    "static/js/main.58f82ccf.js"
+  ]
+}

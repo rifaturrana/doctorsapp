@@ -39,7 +39,7 @@ const appointmentSchema = new Schema(
       bloodPressure: {
         type: String,
         trim: true,
-        // required: true,
+        required: true,
       },
       problemShortInfo: {
         type: String,
