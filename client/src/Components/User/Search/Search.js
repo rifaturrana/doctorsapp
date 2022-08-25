@@ -22,7 +22,13 @@ const Search = () => {
     { value: "Phycologist", label: "Phycologist" },
     { value: "Cardiologist", label: "Cardiologist" },
     { value: "Dentist", label: "Dentist" },
-    { value: "Cardiac", label: "Cardiac" },
+    { value: "Cancer", label: "Cancer" },
+    { value: "Dermatologists", label: "Dermatologists" },
+    { value: "Gastroenterologists", label: "Gastroenterologists" },
+    { value: "Neurologists", label: "Neurologists" },
+    { value: "Pathologists", label: "Pathologists" },
+    { value: "Psychiatrists", label: "Psychiatrists" },
+    { value: "Urologists", label: "Urologists" },
   ];
   const onChangeSpecialist = (event) => {
     setSpecialist(event.value);

@@ -16,6 +16,7 @@ import SideMenu from "../../../../Components/Doctor/SideMenu/SideMenu";
 import AppointmentsIndex from ".././Appointment/index";
 import Profile from ".././Profile/Profile";
 import RequestsIndex from ".././Request/index";
+import FourOFour from "../../../FourOFour/index";
 const Master = () => {
   const history = useHistory();
   const [step, setstep] = useState(null);
@@ -216,6 +217,7 @@ const Master = () => {
               <Profile doctor={doctor} />
             </Route>
             <Route exact path="/doctor/requests" component={RequestsIndex} />
+            <Route path="*" component={FourOFour} />
           </Switch>
         </div>
       </div>

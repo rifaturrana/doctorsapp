@@ -11,7 +11,7 @@ import DoctorIndex from "../Doctor";
 import DoctorShow from "../Doctor/Show";
 import AdminIndex from "../Admins/index";
 import AdminCreate from "../Admins/Create";
-// import FourOFour from "../FourOFour/index";
+import FourOFour from "../../../FourOFour/index";
 
 const Index = () => {
   return (
@@ -27,6 +27,7 @@ const Index = () => {
 
           <Route exact path="/admin/admin-list" component={AdminIndex} />
           <Route exact path="/admin/create-admin" component={AdminCreate} />
+          <Route path="*" component={FourOFour} />
         </Switch>
       </div>
     </div>
