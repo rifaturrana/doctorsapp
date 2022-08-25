@@ -54,9 +54,10 @@ const SetAppointmentRequest = async (req, res, next) => {
       age,
       height,
       weight,
-      // bloodPressure,
+      bloodPressure,
       problemShortInfo,
     } = req.body;
+
     console.log(
       req.body,
       "--------------------------------",

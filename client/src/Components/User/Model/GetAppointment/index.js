@@ -220,7 +220,7 @@ const GetAppointment = ({ hidemodal, doctor }) => {
                         type="text"
                         name="bloodPressure"
                         defaultValue={patient ? patient.bloodPressure : null}
-                        {...register("bloodPresssure", {
+                        {...register("bloodPressure", {
                           required: "Blood pressure is required",
                         })}
                         className="form-control shadow-none"
