@@ -195,6 +195,7 @@ const Index = ({ user }) => {
                             required: "Height is required",
                           })}
                           className="form-control shadow-none"
+                          placeholder="Enter height (5, 6 feet)"
                         />
                       </div>
                     </div>
@@ -244,6 +245,7 @@ const Index = ({ user }) => {
                             required: "Blood pressure is required",
                           })}
                           className="form-control shadow-none"
+                          placeholder="Enter BP (50/60, 60/70)"
                         />
                       </div>
                     </div>
