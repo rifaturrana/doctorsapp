@@ -7,6 +7,7 @@ const Contact = () => {
   return (
     <div className="contact">
       <Navbar />
+
       <div className="map-content">
         <div className="container">
           <div className="row">
@@ -15,10 +16,7 @@ const Contact = () => {
               style={{ marginTop: "100px" }}
             >
               <h1>Find Us on Google Maps</h1>
-              <p>
-                Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-                used in laying out print, graphic or web designs.
-              </p>
+              <hr />
             </div>
 
             <div className="col-12 map-column">

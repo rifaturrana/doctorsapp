@@ -16,10 +16,10 @@ const Footer = () => {
               </Link>
 
               <br />
-              <p>
+              {/* <p>
                 Lorem ipsum, or lipsum as it is sometimes known, is dummy text
                 used in laying out print, graphic or web designs.{" "}
-              </p>
+              </p> */}
             </div>
           </div>
           <div className="col-12 col-lg-4 mb-4 mb-lg-0 text-center text-lg-left pr-lg-4">
@@ -50,6 +50,9 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+          <p class="copyright" style={{ textAlign: "center", color: "black" }}>
+            &copy; 2022 . All Rights Reserved
+          </p>
         </div>
       </div>
     </div>

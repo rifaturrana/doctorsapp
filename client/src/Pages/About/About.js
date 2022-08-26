@@ -13,7 +13,7 @@ const About = () => {
           <div className="row">
             <div className="col-12 col-lg-6 content d-none d-lg-block">
               <h1>
-                About<span>Doctor</span>
+                Book<span>Doctor</span>
               </h1>
             </div>
             <div className="col-12 col-lg-6 image-column text-center d-none d-lg-block">
@@ -33,10 +33,23 @@ const About = () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h3>Doctor</h3>
-              <p>this is doctor app</p>
-              <p>this is dummy app</p>
-              <p>Work in progress</p>
+              <p>
+                <span>Book Doctor</span> has been a popular doc booking app that
+                offers online video consultation, booking doctor’s appointments
+                after choosing the specialist needed, getting digital
+                prescriptions, etc. It provides all information about doctors
+                such as experience, qualification, consulting fees, timings,
+                etc. It is ideal for those who look for specialized doctors for
+                different ailments.
+              </p>
+              <p>
+                As a patient-focused, flexible app, it offers free service to
+                doctors and patients, alike. Patients can ask any type of
+                health-related query and get expert answers from the doctors. It
+                is easy to connect with the best of doctors in a short while. It
+                is completely safe and secure as far as consultation goes. You
+                can even have a free doctor chat with a follow-up.
+              </p>
             </div>
           </div>
         </div>
