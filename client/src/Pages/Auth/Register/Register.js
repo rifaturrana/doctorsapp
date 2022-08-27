@@ -173,7 +173,11 @@ const Register = () => {
                     className="btn shadow-none"
                     disabled={loading}
                   >
-                    {loading ? <span>Loading...</span> : <span>Register</span>}
+                    {loading ? (
+                      <span>Loading...</span>
+                    ) : (
+                      <span style={{ color: "white" }}>Register</span>
+                    )}
                   </button>
                 </div>
               </div>
@@ -181,6 +185,11 @@ const Register = () => {
               <div className="d-flex justify-content-center pt-2">
                 <p className="text-muted">
                   Have an account? <Link to="/login">Login</Link>
+                </p>
+              </div>
+              <div className="d-flex justify-content-center pt-2">
+                <p className="text-muted">
+                  Back to --><Link to="/">Home</Link>
                 </p>
               </div>
             </form>

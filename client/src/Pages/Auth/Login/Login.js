@@ -161,7 +161,11 @@ const Login = () => {
                     className="btn shadow-none"
                     disabled={loading}
                   >
-                    {loading ? <span>Loading...</span> : <span>Login</span>}
+                    {loading ? (
+                      <span>Loading...</span>
+                    ) : (
+                      <span style={{ color: "white" }}>Login</span>
+                    )}
                   </button>
                 </div>
               </div>
@@ -169,6 +173,11 @@ const Login = () => {
               <div className="d-flex justify-content-center pt-2">
                 <p className="text-muted">
                   No account? <Link to="/register">Register</Link>
+                </p>
+              </div>
+              <div className="d-flex justify-content-center pt-2">
+                <p className="text-muted">
+                  Back to --><Link to="/">Home</Link>
                 </p>
               </div>
             </form>
