@@ -262,9 +262,9 @@ const GetAppointment = ({ hidemodal, doctor }) => {
                       disabled={isLoading}
                     >
                       {isLoading ? (
-                        <span>Submitting...</span>
+                        <span style={{ color: "white" }}>Submitting...</span>
                       ) : (
-                        <span>Submit</span>
+                        <span style={{ color: "white" }}>Submit</span>
                       )}
                     </button>
                   </div>

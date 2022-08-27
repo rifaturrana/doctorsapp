@@ -162,7 +162,7 @@ const Login = () => {
                     disabled={loading}
                   >
                     {loading ? (
-                      <span>Loading...</span>
+                      <span style={{ color: "white" }}>Loading...</span>
                     ) : (
                       <span style={{ color: "white" }}>Login</span>
                     )}

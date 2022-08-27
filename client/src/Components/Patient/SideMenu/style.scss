@@ -81,8 +81,11 @@
     }
 
     .is-Active {
-      color: #fff;
+      color: white;
       background: $primary-color;
+    }
+    .is-Active p {
+      color: #fff;
     }
   }
 
