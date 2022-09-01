@@ -6,7 +6,7 @@ const validateEmail = function (email) {
   return re.test(email);
 };
 
-const adminSchma = new Schema(
+const adminSchema = new Schema(
   {
     name: {
       type: String,
@@ -54,6 +54,6 @@ const adminSchma = new Schema(
   }
 );
 
-const Admin = model("Admin", adminSchma);
+const Admin = model("Admin", adminSchema);
 
 module.exports = Admin;

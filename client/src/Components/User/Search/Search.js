@@ -43,7 +43,7 @@ const Search = () => {
       <div className="container">
         <div className="card border-0 shadow">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="d-flex">
+            <div className="d-flex justify-content-between">
               <div>
                 <Select
                   classNamePrefix="custom-select"
