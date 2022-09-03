@@ -28,7 +28,7 @@ const Navbar = () => {
               fontStyle: "bold",
             }}
           >
-            DoctorApp
+            Book<span>Doctor</span>
           </span>
         </Link>
         <button
@@ -43,7 +43,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="toogleMobileMenu">
-          <ul className="navbar-nav mx-auto    text-center  ">
+          <ul className="navbar-nav    text-center  ">
             <li className="nav-item ">
               <Link className="nav-link" to="/">
                 <span className="text">Home</span>
