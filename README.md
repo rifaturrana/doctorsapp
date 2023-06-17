@@ -22,6 +22,7 @@ Here are some screenshots for doctors:
 Patients can register and log in to the application using their credentials. They have access to a search option to find doctors based on specific criteria. Patients can request appointments with doctors, which will be sent to the doctor's request appointment section. Patients can view and manage their appointments through their dashboard. Additionally, patients can update their profile information. 
 Here are some screenshots for patients:
 <div >
+            <img src="screenshots/s33.png" alt="Screenshot 2" width="300" />
    <img src="screenshots/ss12.png" alt="Screenshot 2" width="300" />
       <img src="screenshots/ss13.png" alt="Screenshot 2" width="300" />
        <img src="screenshots/ss9.png" alt="Screenshot 1" width="300" />
