@@ -1,26 +1,12 @@
 # DoctorsApp Web Application
 DoctorsApp is a full-stack web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It provides a platform for patients, doctors, and admins to manage various aspects of medical appointments and user information. The application includes the following sections:
 # Sections
-## Patient Section
-Patients can register and log in to the application using their credentials. They have access to a search option to find doctors based on specific criteria. Patients can request appointments with doctors, which will be sent to the doctor's request appointment section. Patients can view and manage their appointments through their dashboard. Additionally, patients can update their profile information. 
-Here are some screenshots for patients:
-<div >
-   <img src="screenshots/ss12.png" alt="Screenshot 2" width="300" />
-      <img src="screenshots/ss13.png" alt="Screenshot 2" width="300" />
-       <img src="screenshots/ss9.png" alt="Screenshot 1" width="300" />
-    <img src="screenshots/ss14.png" alt="Screenshot 2" width="300" />
-        <img src="screenshots/ss16.png" alt="Screenshot 2" width="300" />
-     <img src="screenshots/ss8.png" alt="Screenshot 2" width="300" />
-    <img src="screenshots/ss7.png" alt="Screenshot 2" width="300" />
-   <img src="screenshots/ss10.png" alt="Screenshot 2" width="300" />
-  <img src="screenshots/ss11.png" alt="Screenshot 2" width="300" />
-
-</div>
 
 ## Doctor Section
 Doctors can register and log in to the application, and their accounts require approval from admins. Doctors need to complete specific steps to fill out their profile completely before it can be approved. Once approved, doctors can manage their availability and appointment schedule. They can view and respond to appointment requests from patients and see their upcoming appointments. Doctors can also update their profile information.
 Here are some screenshots for doctors:
 <div align="center" >
+      <img src="screenshots/ss25.png" alt="Screenshot 2" width="300" />
    <img src="screenshots/ss25.png" alt="Screenshot 2" width="300" />
     <img src="screenshots/ss26.png" alt="Screenshot 2" width="300" />
    <img src="screenshots/ss27.png" alt="Screenshot 2" width="300" />
@@ -32,6 +18,22 @@ Here are some screenshots for doctors:
   <img src="screenshots/ss6.png" alt="Screenshot 2" width="300" />
    <img src="screenshots/ss17.png" alt="Screenshot 1" width="300" />
 </div>
+## Patient Section
+Patients can register and log in to the application using their credentials. They have access to a search option to find doctors based on specific criteria. Patients can request appointments with doctors, which will be sent to the doctor's request appointment section. Patients can view and manage their appointments through their dashboard. Additionally, patients can update their profile information. 
+Here are some screenshots for patients:
+<div >
+   <img src="screenshots/ss12.png" alt="Screenshot 2" width="300" />
+      <img src="screenshots/ss13.png" alt="Screenshot 2" width="300" />
+       <img src="screenshots/ss9.png" alt="Screenshot 1" width="300" />
+      <img src="screenshots/ss14.png" alt="Screenshot 2" width="300" />
+        <img src="screenshots/ss16.png" alt="Screenshot 2" width="300" />
+     <img src="screenshots/ss8.png" alt="Screenshot 2" width="300" />
+    <img src="screenshots/ss7.png" alt="Screenshot 2" width="300" />
+   <img src="screenshots/ss10.png" alt="Screenshot 2" width="300" />
+  <img src="screenshots/ss11.png" alt="Screenshot 2" width="300" />
+
+</div>
+
 
 ## Admin Section
 Admins have the authority to approve or reject doctor accounts. They can create different roles such as super_admin or manager. Admins have access to statistics such as the total number of patients, doctors, and appointments within the application.
@@ -78,7 +80,7 @@ Frontend: Netlify (https://www.netlify.com/)
 Backend: Heroku (https://www.heroku.com/)
 Database: MongoDB Atlas (https://www.mongodb.com/cloud/atlas)
 
-`Please note that the Heroku deployment has a time limit, which may result in the temporary unavailability of the application.`
+`[https://bookdoctoronline.herokuapp.com/ ] Please note that the Heroku deployment has a time limit, which may result in the temporary unavailability of the application.`
 
 # Prerequisites
 Before running the DoctorsApp web application, ensure that you have the following prerequisites installed:
